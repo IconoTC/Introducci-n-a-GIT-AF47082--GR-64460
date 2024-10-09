@@ -6,7 +6,118 @@
 - Duración: 16 horas
 - Modalidad: Virtual
 
-## Contenidos
+## Índice
+
+- [GIT (20h)](#git-20h)
+  - [Índice](#índice)
+  - [Contenidos previstos](#contenidos-previstos)
+  - [Día 1. Conceptos básicos](#día-1-conceptos-básicos)
+    - [Introducción](#introducción)
+      - [Qué es un SCV](#qué-es-un-scv)
+      - [Tipos de SCV: centralizados y distribuidos](#tipos-de-scv-centralizados-y-distribuidos)
+      - [Git: un SCV distribuido: Historia de GIT](#git-un-scv-distribuido-historia-de-git)
+      - [Características de Git como SCV distribuido](#características-de-git-como-scv-distribuido)
+    - [Instalación y configuración inicial](#instalación-y-configuración-inicial)
+      - [Terminales](#terminales)
+        - [PowerShell](#powershell)
+        - [El comando less](#el-comando-less)
+      - [Configuración](#configuración)
+    - [Referencias](#referencias)
+    - [Quick start](#quick-start)
+      - [Comandos básicos de Git](#comandos-básicos-de-git)
+      - [Primeros pasos](#primeros-pasos)
+        - [Primer repo (init)](#primer-repo-init)
+        - [Anatomía de un repositorio git: staging area, index and cache](#anatomía-de-un-repositorio-git-staging-area-index-and-cache)
+        - [Añadir contenidos al repositorio. Primer commit](#añadir-contenidos-al-repositorio-primer-commit)
+        - [Git add](#git-add)
+        - [Git status](#git-status)
+        - [Git commit. Mensajes de commit](#git-commit-mensajes-de-commit)
+        - [git log / git show](#git-log--git-show)
+    - [Comandos de Git: Referencias y paths](#comandos-de-git-referencias-y-paths)
+      - [Anatomía de comandos típicos, referencias vs paths](#anatomía-de-comandos-típicos-referencias-vs-paths)
+      - [Paths](#paths)
+      - [Tipos de referencias](#tipos-de-referencias)
+      - [Referencias simbólicas](#referencias-simbólicas)
+      - [Referencias relativas](#referencias-relativas)
+    - [Integración con otras herramientas y entornos](#integración-con-otras-herramientas-y-entornos)
+      - [Clientes gráficos](#clientes-gráficos)
+      - [Entornos de desarrollo](#entornos-de-desarrollo)
+        - [VSCode](#vscode)
+      - [Repositorios remotos (hosting de repositorios)](#repositorios-remotos-hosting-de-repositorios)
+      - [Comandos de conexión y uso del repositorio remoto (resumen)](#comandos-de-conexión-y-uso-del-repositorio-remoto-resumen)
+  - [Dia 2. Fundamentos. Commits](#dia-2-fundamentos-commits)
+    - [Fundamentos y arquitectura interna de Git](#fundamentos-y-arquitectura-interna-de-git)
+      - [Git internals: Plumbing commands](#git-internals-plumbing-commands)
+      - [La carpeta .git](#la-carpeta-git)
+      - [Hashes: creación y lectura](#hashes-creación-y-lectura)
+      - [Elementos de un repositorio- Primer commit](#elementos-de-un-repositorio--primer-commit)
+      - [Modificación de un archivo](#modificación-de-un-archivo)
+      - [References: Branches and HEAD](#references-branches-and-head)
+      - [Taller: Crear un nueva repositorio desde cero](#taller-crear-un-nueva-repositorio-desde-cero)
+        - [Creando un repositorio desde cero](#creando-un-repositorio-desde-cero)
+        - [Gestionando el repositorio con comandos plumbing](#gestionando-el-repositorio-con-comandos-plumbing)
+        - [Creando un commit con comandos plumbing](#creando-un-commit-con-comandos-plumbing)
+        - [En resumen del Taller](#en-resumen-del-taller)
+    - [Commits: Herramientas para gestionar los commits](#commits-herramientas-para-gestionar-los-commits)
+      - [Comprobar el repositorio. Git log](#comprobar-el-repositorio-git-log)
+      - [Alias](#alias)
+      - [Operaciones en la Staging Area (Index)](#operaciones-en-la-staging-area-index)
+        - [Añadir ficheros](#añadir-ficheros)
+        - [Eliminar de la Staging Area (Index)](#eliminar-de-la-staging-area-index)
+      - [Eliminar ficheros](#eliminar-ficheros)
+        - [Problemas con .gitignore](#problemas-con-gitignore)
+      - [Cambiar nombre de ficheros](#cambiar-nombre-de-ficheros)
+      - [git diff](#git-diff)
+      - [git blame](#git-blame)
+    - [Recapitulando: Git básico](#recapitulando-git-básico)
+  - [Día 3. Cambios en el histórico. Branching](#día-3-cambios-en-el-histórico-branching)
+    - [Cambios en el histórico](#cambios-en-el-histórico)
+      - [Advertencia](#advertencia)
+      - [git command --amend](#git-command---amend)
+      - [git checkout](#git-checkout)
+        - [git checkout a nivel de archivo](#git-checkout-a-nivel-de-archivo)
+      - [git reset](#git-reset)
+        - [git reset a nivel de archivo](#git-reset-a-nivel-de-archivo)
+      - [rebase interactivo](#rebase-interactivo)
+        - [edit: modificando un commit](#edit-modificando-un-commit)
+        - [squash y fixup: fusionando commits](#squash-y-fixup-fusionando-commits)
+        - [drop: eliminando un commit](#drop-eliminando-un-commit)
+      - [Ref logs](#ref-logs)
+      - [Otros comandos](#otros-comandos)
+    - [Branching. Trabajando en paralelo](#branching-trabajando-en-paralelo)
+      - [Ramas (branches)](#ramas-branches)
+      - [Combinación de ramas: Merge y Rebase](#combinación-de-ramas-merge-y-rebase)
+        - [Merge fast-forward](#merge-fast-forward)
+        - [Merge recursive](#merge-recursive)
+        - [Rebase](#rebase)
+      - [Resolución de conflictos](#resolución-de-conflictos)
+      - [Cherrypick](#cherrypick)
+      - [Tags](#tags)
+        - [Operaciones con tags](#operaciones-con-tags)
+      - [Patches](#patches)
+  - [Día 4. Repositorios remotos](#día-4-repositorios-remotos)
+    - [Trabajando con repositorios remotos](#trabajando-con-repositorios-remotos)
+      - [¿Qué son los repositorios remotos?](#qué-son-los-repositorios-remotos)
+      - [Clonado de repositorios](#clonado-de-repositorios)
+      - [Git remote](#git-remote)
+        - [Operaciones con git remote](#operaciones-con-git-remote)
+      - [Operaciones con repositorios remotos](#operaciones-con-repositorios-remotos)
+        - [Git push](#git-push)
+        - [Git pull](#git-pull)
+    - [Trabajando desde repositorios remotos](#trabajando-desde-repositorios-remotos)
+      - [Pull Request](#pull-request)
+        - [Configuración de las ramas y PR](#configuración-de-las-ramas-y-pr)
+        - [Actualizaciones de las ramas feature](#actualizaciones-de-las-ramas-feature)
+      - [Forks](#forks)
+      - [Workflows](#workflows)
+        - [GitFlow](#gitflow)
+        - [GitLab Flow (Environment Branching)](#gitlab-flow-environment-branching)
+        - [GitHub Flow, Feature Branching, Trunk Based Development](#github-flow-feature-branching-trunk-based-development)
+        - [Ship-show-ask](#ship-show-ask)
+    - [Conclusiones. Buenas prácticas](#conclusiones-buenas-prácticas)
+    - [Apéndice](#apéndice)
+
+## Contenidos previstos
 
 - Conceptos básicos
   - ¿Qué es y que no es GIT?
@@ -25,8 +136,6 @@
   - Qué es exactamente una rama en GIT
   - Cómo trabajar con ramas y diferentes maneras de fusionarlas
   - Qué es un conflicto, cómo reducir su frecuencia y cómo resolverlos
-  - Modelos de branching
-  - Git Flow
 - Trabajando con repositorios remotos
   - Cómo comunicar los repositorios locales con los remotos
   - Diferentes escenarios cuando trabajamos en equipo contra un repositorio remoto
@@ -35,6 +144,8 @@
   - Por qué usar PR
   - Cómo hacer correctamente una PR
   - Cómo configurar el repositorio remoto si usamos “PR”
+- Modelos de branching
+  - Git Flow
 
 ## Día 1. Conceptos básicos
 
@@ -355,7 +466,7 @@ Igualmente indica si están en el área de preparación o no.
 
 Se puede utilizar `git status -s` para obtener una salida más compacta.
 
-Además de `git status`, muestra información de alguna de las operaciones posibles en función de los ficheros que detacta en el directorio de trabajo y en el área de preparación.
+Además de `git status`, muestra información de alguna de las operaciones posibles en función de los ficheros que detecta en el directorio de trabajo y en el área de preparación.
 
 ##### Git commit. Mensajes de commit
 
@@ -561,7 +672,7 @@ git clone <url>
 
 ![Relaciones entre repositorios local y remoto](assets/local_n_remote.svg)
 
-Cualquiera que sea la forma en que se han creado, una vez que existe un remote, los dos operaciones principales en relación xcon el son
+Cualquiera que sea la forma en que se han creado, una vez que existe un remote, los dos operaciones principales en relación con él, son
 
 - `git push`: Sube todos los cambios locales al repositorio remoto
 - `git pull`: Descarga los cambios del repositorio remoto al repositorio local
@@ -574,7 +685,7 @@ Cualquiera que sea la forma en que se han creado, una vez que existe un remote, 
 - `git push`
 - `git pull`
 
-## Dia 2. Fundamentos. Comits
+## Dia 2. Fundamentos. Commits
 
 ### Fundamentos y arquitectura interna de Git
 
@@ -588,7 +699,7 @@ Estos comandos son los que utiliza el propio Git internamente para construir los
 En términos de sistema de ficheros, un repositorio Git es una carpeta que incluye un directorio oculto `.git`.
 Éste contiene toda la información necesaria para el control de versiones:
 
-- **Objetos**: blobs, trees, commits, tags anotadosls
+- **Objetos**: blobs, trees, commits, tags anotados
 - **Referencias**: HEAD, master branch, tags ligeros
 - Hooks: scripts que se ejecutan en determinados eventos
 - Info y Logs: información extra sobre el repo y los commits
@@ -610,7 +721,7 @@ Más adelante veremos un cuarto tipo de objeto, los tags (anotadas).
 
 #### Hashes: creación y lectura
 
-La siguiente descripción refleja la forma de explicar estos conceptor propuesta por _Paolo Perrotta_ en su conferencia _Understanding Git_, 3 diciembre 2016, disponible en [YouTube](https://www.youtube.com/watch?v=nHkLxts9Mu4).
+La siguiente descripción refleja la forma de explicar estos conceptos propuesta por _Paolo Perrotta_ en su conferencia _Understanding Git_, 3 diciembre 2016, disponible en [YouTube](https://www.youtube.com/watch?v=nHkLxts9Mu4).
 
 En su capa más profunda Git es un **mapa de objetos** de acuerdo con un patrón clave/valor. Cada objeto es un cierto contenido (valor) que tiene un hash que lo identifica (clave).
 
@@ -851,7 +962,7 @@ Cheesecake
 
 Utilizando un commit como punto de entrada es posible recorrer todos los objetos de un repositorio de git correspondientes al momento en que se creó el commit, reconstruyendo a partir de ellos el estado del proyecto en ese momento, lo que denominamos una **snapshot del proyecto**.
 
-Cuando un fichero no cambia, git no guarda una nueva versión del fichero, sino que guarda una referencia al fichero anterior. De esta forma, git ahorra espacio en disco y tiempo de ejecución.
+Cuando un fichero **no cambia**, git no guarda una nueva versión del fichero, sino que guarda una referencia al fichero anterior. De esta forma, git ahorra espacio en disco y tiempo de ejecución.
 
 En resumen, un commit es un objeto que apunta a un objeto de tipo tree que apunta a uno o varios objetos de tipo blob. Un objeto de tipo blob es un archivo, un objeto de tipo tree es un directorio y un objeto de tipo commit es un snapshot del proyecto en un momento dado.
 
@@ -933,11 +1044,11 @@ type .git\refs\heads\main
 f1dff43f97543e83cab3f52f054cdcf9b26e8d55
 ```
 
-Como veremos más adelante, algunos de los comandos más importasntes de Git son aquellos que permiten **mover el puntero `HEAD`** y **cambiar de rama**.
+Como veremos más adelante, algunos de los comandos más importantes de Git son aquellos que permiten **mover el puntero `HEAD`** y **cambiar de rama**.
 
 #### Taller: Crear un nueva repositorio desde cero
 
-En su libro _Gitting Things Done_, 2021, disponible en [Amazon](https://www.amazon.com/-/es/Omer-Rosenbaum/dp/1801070004), _Omer Rosenbaum_ propone un interesante ejercicio destinado a comprender a fondo en que consiste un repositorio deGit, consistente en crearlo desde cero y añadirle un primer commit.
+En su libro _Gitting Things Done_, 2021, disponible en [freecodecamp](https://www.freecodecamp.org/news/gitting-things-done-book/), _Omer Rosenbaum_ propone un interesante ejercicio destinado a comprender a fondo en que consiste un repositorio deGit, consistente en crearlo desde cero y añadirle un primer commit.
 
 ##### Creando un repositorio desde cero
 
@@ -1501,13 +1612,63 @@ Esta también disponible cuando se accede al repositorio en GitHub
 - `git pull`: Descarga los cambios del repositorio remoto al repositorio local
 -
 
-### REESCRIBIENDO LA HISTORIA
+## Día 3. Cambios en el histórico. Branching
 
-#### amend
+### Cambios en el histórico
+
+- advertencia: no se deben modificar commits que ya han sido compartidos
+- git commit --amend
+- git checkout
+  - git checkout a nivel de archivo
+- git reset
+  - git reset --soft
+  - git reset --mixed
+  - git reset --hard
+  - git reset a nivel de archivo
+- git rebase -i
+- ref logs
+- otros comandos
+  - git stash
+  - git clean
+  - git revert
+  - git bisect
+
+#### Advertencia
+
+La _ley de oro de Git_ dice que **no se deben modificar commits que ya han sido compartidos**
+
+Veremos que pasa en caso de hacerlo, cuando estemos hablando de los repositorios remotos.
+
+#### git command --amend
+
+El comando `git commit --amend` permite modificar el último commit. Se puede utilizar para
+
+- cambiar el mensaje del commit
+- añadir ficheros al commit
+- modificar ficheros del commit
+
+```shell
+git commit --amend
+```
+
+Si no se añade ningún fichero, se abrirá el editor de texto para modificar el mensaje del commit.
+Si han añadido ficheros en el stage, se añadirán al commit.
+
+```shell
+git add <file>
+git commit --amend
+```
+
+En realidad, `git commit --amend` crea un nuevo commit con los cambios del commit anterior y los nuevos cambios. El commit anterior dejara de estar vinculado a ninguna rama y se eliminará en la proxima operación del garbage collector.
+
+El uso de amend debe limitarse a "cambios en el commit anterior", como corregir errores en el mensaje del commit, modificar los ficheros o añadir puntualmente otros nuevos, claramente vinculados a los anteriores. Para cambios de mayor envergadura es mejor práctica crear un nuevo commit.
 
 #### git checkout
 
-git checkout mueve el puntero de referencia HEAD a un commit específico. - en otra rama (lo habitual) - en la misma rama:
+El comando `git checkout` mueve el puntero de referencia HEAD a un commit específico.
+
+- en otra rama (lo habitual)
+- en la misma rama. Veamos este segundo caso
 
 ```shell
 git checkout HEAD~1
@@ -1517,6 +1678,30 @@ You are in 'detached HEAD' state. You can look around, make experimental changes
 If you want to create a new branch to retain commits you create, you may do so (now or later) by using -c with the switch command. Example: git switch -c [new-branch-name]
 
 Or undo this operation with: git switch -
+```
+
+![git checkout](assets/checkout.svg)
+
+En este caso, el puntero HEAD se ha movido al commit anterior al último commit de la rama actual. El mensaje indica que estamos en un estado de HEAD desacoplado (detached HEAD), lo que significa que no estamos en una rama y que cualquier commit que hagamos no estará vinculado a ninguna rama.
+
+En este estado, podemos consultar el estado del proyecto en ese commit, que se reflejara en la working area. Igualmente podemos hacer cambios experimentales, pero si queremos conservarlos, debemos crear una nueva rama desde el último commit desacoplado.
+
+```shell
+git checkout -b new-branch
+```
+
+Si no queremos conservar los cambios, podemos volver a la rama más adelantada con alguno de los comandos
+
+```shell
+git switch -
+git checkout -
+```
+
+Igualmente podemos volver a cualquier rama con alguno de los comandos
+
+```shell
+git switch <branch>
+git checkout <branch>
 ```
 
 ##### git checkout a nivel de archivo
@@ -1534,3 +1719,857 @@ git checkout HEAD~1 README.md --stage
 ```
 
 En este caso, el fichero README.md en el área de preparación vuelve a tener el contenido que tenía en el commit anterior al HEAD.
+
+#### git reset
+
+El comando `git reset` mueve el puntero de referencia de una rama (acompañado por el HEAD), a un commit específico, normalmente un commit anterior de la misma rama. Estaremos 'deshaciendo' los commits posteriores que quedarán huérfanos y se eliminarán la próxima vez que Git haga limpieza.
+
+Sus efectos sobre la working y staging areas dependen de la opción seleccionada:
+
+- hard: el contenido del commit apuntado por la rama se refleja en la working y staging areas
+- mixed: (valor por defecto) el contenido del commit apuntado por la rama se refleja en la working area
+- soft: no se modifican la working y staging areas. Cambia todos los archivos a "Cambios a ser committed".
+
+![git reset](assets/reset.svg)
+
+##### git reset a nivel de archivo
+
+git reset HEAD [file]
+
+En este caso no mueve el HEAD del repositorio, lo que hace es llevar al directorio de staged el fichero al que hemos hecho reset con el contenido que tenía en el último commit. Como se una el parámetro por defecto, mixed, en el directorio de trabajo estará la versión última del contenido pendiente de commit y en staged la versión del contenido a la que hemos vuelto.
+
+#### rebase interactivo
+
+Uno de los comando más potentes de Git es el rebase interactivo. Permite reescribir la historia de un repositorio, cambiando el orden de los commits, modificando los mensajes de los commits, eliminando commits, fusionando commits, etc.
+
+```shell
+git rebase -i <primer commit no incluido en el rebase >
+git rebase -i HEAD~4
+```
+
+Como resultado se abre un editor de texto con una lista de commits que se van a reescribir. Cada línea tiene un comando y un commit.
+
+```sh
+pick 1ecb721 Mensaje del commit HEAD~3
+pick 07ad6a9 Mensaje del commit HEAD~2
+pick 7515002 Mensaje del commit HEAD~1
+pick 7c4668d Mensaje del último commit
+
+# Rebase 9457f43..7c4668d onto 9457f43 (4 commands)
+#
+# Commands:
+
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop for amending
+# s, squash <commit> = use commit, but meld into previous commit
+# f, fixup [-C | -c] <commit> = like "squash" but keep only the previous
+# commit's log message, unless -C is used, in which case
+# keep only this commit's message; -c is same as -C but
+# opens the editor
+# x, exec <command> = run command (the rest of the line) using shell
+# b, break = stop here (continue rebase later with 'git rebase --continue')
+# d, drop <commit> = remove commit
+# l, label <label> = label current HEAD with a name
+# t, reset <label> = reset HEAD to a label
+# m, merge [-C <commit> | -c <commit>] <label> [# <oneline>]
+# create a merge commit using the original merge commit's
+# message (or the oneline, if no original merge commit was
+# specified); use -c <commit> to reword the commit message
+# u, update-ref <ref> = track a placeholder for the <ref> to be updated
+# to this position in the new commits. The <ref> is
+# updated at the end of the rebase
+#
+
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+```
+
+Los comandos más comunes son
+
+- pick: utiliza el commit
+- reword: utiliza el commit, pero permite cambiar el mensaje
+- edit: utiliza el commit, pero para en él para hacer cambios
+- squash: fusiona el commit con el anterior
+- fixup: fusiona el commit con el anterior, pero mantiene el mensaje del anterior
+- drop: elimina el commit
+
+También es posible reordenar los commits simplemente cambiando el orden de las líneas.
+
+A partir del primer commit que cambia, todos los commits se deben reescribir, dado que su inmutabilidad impide ningún cambio en ellos.
+
+Por ejemplo si se quiere cambiar el mensaje de un commit, se cambia el comando pick por reword. Al cerrar el editor se abrirá otro editor con el mensaje del commit, que se puede modificar.
+
+```shell
+git rebase -i HEAD~4
+```
+
+```shell
+pick 1ecb721 Mensaje del commit HEAD~3
+reword 07ad6a9 Mensaje del commit HEAD~2
+pick 7515002 Mensaje del commit HEAD~1
+pick 7c4668d Mensaje del último commit
+```
+
+```shell
+Mensaje del commit HEAD~2
+## Información de que estamos en el editor de reword
+```
+
+![git rebase i](assets/rebase_i.svg)
+
+##### edit: modificando un commit
+
+Edit utiliza el commit indicado para hacer cambios, incluyendo eliminar parte del contenido, añadir más contenido o separar el contenido en diversos commits. Al cerrar el editor, se abrirá una consola de Git en la que se pueden hacer los cambios deseados.
+
+```shell
+git rebase -i HEAD~4
+```
+
+```shell
+pick 1ecb721 Mensaje del commit HEAD~3
+pick 07ad6a9 Mensaje del commit HEAD~2
+edit 7515002 Mensaje del commit HEAD~1
+pick 7c4668d Mensaje del último commit
+```
+
+```shell
+Stopped at 7515002...  Mensaje del commit HEAD~1
+You can amend the commit now, with
+
+  git commit --amend
+
+Once you are satisfied with your changes, run
+
+  git rebase --continue
+```
+
+La salida de git status nos indicara en que commit estamos y que podemos hacer cambios en él.
+
+```shell
+interactive rebase in progress; onto 9457f43
+Last command done (1 command done):
+   edit 1ecb721 Add new Huskies
+Next commands to do (3 remaining commands):
+   pick 07ad6a9 Add and configure github action
+   pick 7515002 Simulate lint fail
+  (use "git rebase --edit-todo" to view and edit)
+You are currently editing a commit while rebasing branch 'feature/actions' on '9457f43'.
+  (use "git commit --amend" to amend the current commit)
+  (use "git rebase --continue" once you are satisfied with your changes)
+
+nothing to commit, working tree clean
+```
+
+Como estamos editando el commit HEAD~1, empezaremos por un reset con su valor por defecto --mixed enviando todo su contenido al area de trabajo.
+
+```shell
+git reset HEAD~1
+```
+
+A partir de aquí podemos hacer los cambios que deseemos, añadir ficheros, eliminar ficheros, modificar ficheros, etc. y almacenarlos en tantos commits como necesitemos.
+
+```shell
+git add <files>
+git commit -m "Mensaje del primer commit modificado"
+git add <other files>
+git commit -m "Mensaje del segundo commit modificado"
+```
+
+Una vez que hemos terminado de hacer los cambios, podemos continuar con el rebase
+
+```shell
+git rebase --continue
+```
+
+##### squash y fixup: fusionando commits
+
+Si se quiere fusionar dos o más commits, se puede utilizar squash o fixup. La diferencia entre ambos es que squash mantiene el mensaje del commit que se va a fusionar, mientras que fixup lo elimina.
+
+```shell
+git rebase -i HEAD~4
+```
+
+```shell
+pick 1ecb721 Mensaje del commit HEAD~3
+pick 07ad6a9 Mensaje del commit HEAD~2
+squash 7515002 Mensaje del commit HEAD~1
+pick 7c4668d Mensaje del último commit
+```
+
+El comando **squash** fusiona el commit HEAD~1 con el commit anterior, HEAD~2. Al cerrar el editor, se abrirá otro editor con el mensaje de los dos commits, que se puede modificar, Seleccionando alguno de los mensajes o creando uno nuevo.
+
+Por su parte el comando **fixup** fusiona el commit HEAD~1 con el commit anterior, HEAD~2, pero mantiene el mensaje del commit anterior, sin darnos opción a cambiarlo.
+
+##### drop: eliminando un commit
+
+Al indicar drop, el commit desaparece de la lista de commits a reescribir.
+
+```shell
+git rebase -i HEAD~4
+```
+
+```shell
+pick 1ecb721 Mensaje del commit HEAD~3
+pick 07ad6a9 Mensaje del commit HEAD~2
+drop 7515002 Mensaje del commit HEAD~1
+pick 7c4668d Mensaje del último commit
+```
+
+El resultado es que el commit HEAD~1 desaparece de la lista de commits a reescribir. Como consecuencia, la información de ese commit se pierde completamente.
+
+Un posible caso sería eliminar información sensible que por error se ha incluido en un commit.
+
+#### Ref logs
+
+El reflog es un registro de los cambios en los punteros de referencia (HEAD, ramas, etc.) que se han producido en el repositorio. Se puede consultar con el comando `git reflog`
+
+```shell
+git reflog
+```
+
+También se puede obtener la lista de todos los logs en los que se guarda la información de los cambios en los punteros de referencia, dentro de la carpeta logs del repositorio.
+
+```shell
+git reflog list
+```
+
+Esta información es muy util para conocer los commits "eliminados", es decir aquellos a los que ya no se puede acceder directamente desde las ramas, pero que siguen existiendo en el repositorio.
+
+Utilidades gráficas como gitk o la extensión Git Graph de Visual Studio Code permiten visualizar la información de los reflogs de una manera más intuitiva para el usuario.
+
+#### Otros comandos
+
+- git stash: guarda los cambios en un commit temporal, que se almacena en una pila de cambios. Se puede recuperar en cualquier momento.
+- git clean: elimina los ficheros no rastreados por Git
+  - git clean -n: muestra los ficheros que se eliminarán
+  - git clean -f: elimina los ficheros
+- git revert: crea un nuevo commit que deshace los cambios de un commit anterior
+- git bisect: busca un commit que introdujo un error
+
+### Branching. Trabajando en paralelo
+
+- Ramas (branches)
+- Combinación de ramas: Merge y Rebase
+  - Merge fast-forward
+  - Merge recursive
+  - Rebase
+- Resolución de conflictos
+- Cherry-pick
+
+#### Ramas (branches)
+
+Comandos para trabajar con ramas
+
+- `git branch`: Lista las ramas locales
+- `git branch nombre_rama`: Crea una nueva rama
+- `git checkout nombre_rama`: Cambia a la rama especificada
+- `git checkout -b nombre_rama`: Crea una nueva rama y cambia a ella
+- `git merge nombre_rama`: Fusiona la rama especificada con la rama actual
+
+- branches
+  - Crear, borrar, intercambiar
+  - Crear desde ref (git checkout b mybranch master~1)
+
+#### Combinación de ramas: Merge y Rebase
+
+El destino final de una rama suele ser la fusión con la rama principal. Para ello se utilizan dos estrategias, basadas en distintos comandos
+
+- merge con el comando `git merge`
+- rebase con el comando `git rebase`
+
+##### Merge fast-forward
+
+El merge fast-forward es una estrategia de merge que se utiliza cuando la rama que se va a fusionar (e,g. main) no tiene commits que no estén en la rama de destino. En este caso, Git no crea un commit de merge, sino que mueve el puntero de la rama de destino al último commit de la rama que se va a fusionar.
+
+```shell
+git checkout -b feature/branch
+echo 'Feature One' > feature1.txt
+git add feature1.txt
+git commit -m "Add feature one"
+git checkout main
+git merge feature/branch
+```
+
+![merge fast-forward](assets/merge_fast_forward.svg)
+
+##### Merge recursive
+
+El merge recursive es una estrategia de merge que se utiliza cuando la rama que se va a fusionar tiene commits que no están en la rama de destino. En este caso, Git crea un commit de merge, que tiene dos padres, uno de la rama de destino y otro de la rama que se va a fusionar.
+
+```shell
+git checkout -b feature/branch
+echo 'Feature Two' > feature2.txt
+git add feature2.txt
+git commit -m "Add feature two"
+git checkout main
+echo 'Feature Three' > feature3.txt
+git add feature3.txt
+git commit -m "Add feature three"
+git merge feature/branch
+```
+
+![merge recursive](assets/merge_recursive.svg)
+
+##### Rebase
+
+El rebase es una estrategia de merge que se utiliza para reescribir la historia de una rama, cambiando el orden de los commits, modificando los mensajes de los commits, eliminando commits, fusionando commits, etc.
+
+```shell
+git checkout -b feature/branch
+echo 'Feature Four' > feature4.txt
+git add feature4.txt
+git commit -m "Add feature four"
+git checkout main
+echo 'Feature Five' > feature5.txt
+git add feature5.txt
+git commit -m "Add feature five"
+git rebase feature/branch
+```
+
+![rebase](assets/rebase.svg)
+
+#### Resolución de conflictos
+
+Los conflictos surgen durante un merge recursivo o un rebase, cuando dos commits han modificado la misma parte de un fichero. Git no puede decidir cuál de los dos cambios es el correcto, por lo que deja la resolución del conflicto al usuario.
+
+El editor de texto asociado a git muestra el fichero con los conflictos, que se indican con una estructura:
+
+```shell
+<<<<<<<
+Código de la rama actual
+=======
+Código de la rama que se va a fusionar
+>>>>>>>.
+```
+
+El usuario debe decidir qué cambios se deben mantener: los actuales, los entrantes o ambos y el editor eliminará los marcadores de conflicto.
+
+En algún caso, si queda contenido fuera de stage que se quiere incluir, puede ser necesario hacer un add.
+
+Finalmente, se debe hacer un commit para finalizar la resolución del conflicto. En este caso no se indicara mensaje y git abrirá de nuevo el editor con el mensaje por defecto de un commit de fusión, que se puede modificar.
+
+```shell
+git add <file>
+git commit
+```
+
+#### Cherrypick
+
+El comando cherry-pick "copia" un commit, creando un nuevo commit en el branch actual con el mismo mensaje y patch que otro commit. Es un rebase de un solo commit.
+
+Si en la rama actual se quiere añadir un commit de otra rama, se puede hacer con el comando `git cherry-pick`
+
+```shell
+git cherry-pick <commit>
+```
+
+La principal utilidad de cherry-pick es la de añadir a una o varias ramas un hotfix (solución de un problema urgente) que se ha hecho en otra rama, sin tener que hacer un merge.
+
+El hotfix debe ser un commit atómico, es decir, que no dependa de otros commits. Esto sería una buena práctica en cualquier caso, pero en el caso de un hotfix es imprescindible.
+
+#### Tags
+
+Los tags son referencias a un commit específico. Se utilizan para marcar versiones, releases, etc. Son otra forma de referenciar un commit, como una rama pero hay una diferencia entre ambas:
+
+- las ramas son dinámicas, cambian con cada commit que se hace en ellas. Su objetivo es seguir el desarrollo del proyecto.
+
+- los tags son estáticos, no cambian ni se mueven con el tiempo. Una vez aplicado, se debe dejar tal cual.
+
+Existen dos tipos de tags:
+
+- Ligeras: Se crean sin modificador y no tienen mensaje. Son simplemente un puntero a un commit, igual que una rama.
+
+Para crear un tag se utiliza el comando `git tag`
+
+```shell
+git tag v1.0 <referencia al commit>
+```
+
+- Anotados: Se crean con el modificador -a y se les puede añadir un mensaje. Se almacenan como objetos completos en la base de datos de Git. Son pos tanto identificadas por su hash (checksum); contienen el nombre, email y fecha del tagger. Se pueden firmar y verificar. Son el formato recomendado
+  Are stored as full objects in the Git database. They are checksummed; contain the tagger name, email and date. Can be signed and verified.
+
+Para crear un tag se utiliza el comando `git tag` con el modificador -a
+
+```shell
+git tag -a v1.0 -m "Primera versión"
+```
+
+##### Operaciones con tags
+
+Para listar los tags se utiliza el comando `git tag`
+
+```shell
+git tag
+```
+
+Pare mostrar un tag creado se utiliza el comando `git show`
+
+```shell
+git show v1.0
+```
+
+Para subir un tag al repositorio remoto se utiliza el comando `git push`
+
+```shell
+git push origin v1.0
+```
+
+También es posible subir todos los tags al repositorio remoto:
+
+```shell
+git push origin --tags
+```
+
+Para usar un tag, se puede hacer checkout a un tag
+
+```shell
+git checkout v1.0
+```
+
+#### Patches
+
+Los patches son ficheros que contienen los cambios entre dos commits. Se pueden generar con el comando `git format-patch`
+
+```shell
+git format-patch HEAD~2..HEAD
+```
+
+Para aplicar un patch se utiliza el comando `git apply`
+
+```shell
+git apply 0001-Add-new-feature.patch
+```
+
+## Día 4. Repositorios remotos
+
+### Trabajando con repositorios remotos
+
+- ¿Qué son los repositorios remotos?
+- Clonado de repositorios
+- Git remote
+- Operaciones con repositorios remotos
+  - git fetch
+  - git pull
+  - git push
+
+#### ¿Qué son los repositorios remotos?
+
+Un repositorio remoto es una versión del proyecto que se encuentra alojada en un **servidor** (cualquier otro ordenador). Puede ser útil para
+
+- colaborar con otras personas en un proyecto, ya que les permite enviar cambios al proyecto y recibir cambios del proyecto.
+- mantener una copia del proyecto en un servidor remoto, para tener una copia de seguridad o para trabajar en diferentes ordenadores.
+
+EL "servidor" puede ser
+
+- un **hosting** de repositorios Git, como **GitHub**, **GitLab** o **Bitbucket**
+- un servidor propio, en el que se instalara un servidor Git como **GitLab**, **Gitea** o **Gogs**
+
+Los **repositorios remotos**, alojados en los servidores, cualquier que sea su tipo, son una versión de repositorio algo diferente, conocida como **repositorio bare**.
+
+Se denominan bare porque no tienen working area, es decir, no tienen los ficheros del proyecto, solo los metadatos de Git.
+
+Para crear un repositorio remoto en el servidor, se puede utilizar el comando `git init` con la opción `--bare`
+
+```shell
+git init --bare
+```
+
+Normalmente es el software del servidor el que se encarga de crear el repositorio remoto, por lo que no es necesario hacerlo manualmente.
+
+Por ejemplo en github, se crea un repositorio completando un **formulario** en la web, indicando el nombre del repositorio, si es público o privado, si tiene un README.md, etc.
+
+#### Clonado de repositorios
+
+El proceso de obtener localmente una copia de un repositorio remoto se denomina **clonado**. Se realiza con el comando `git clone`
+
+```shell
+git clone <url>
+```
+
+Un proceso de clonado realiza varias operaciones
+
+- Crea un directorio con el nombre del repositorio
+- Inicializa un repositorio local de Git
+- Añade un repositorio remoto con el nombre `origin` y la URL del repositorio remoto
+- Descarga los ficheros del repositorio remoto en su rama main al directorio local
+- Añade un puntero a la rama main del repositorio remoto con el nombre `origin/main`
+- Crea una rama local `main` que apunta al mismo commit que `origin/main`
+- Crea una working area con los ficheros del proyecto
+- Crea un puntero HEAD que apunta a la rama local `main`
+
+Es posible indicar al clonado que se realice en un directorio diferente al del repositorio remoto
+
+```shell
+git clone <url> <nombre_directorio>
+```
+
+Respecto a las ramas, el clonado crea una rama local `main` que apunta al mismo commit que `origin/main`. Si el repositorio remoto tiene más ramas, se pueden añadir al repositorio local con el comando `git fetch`
+
+```shell
+git fetch
+```
+
+Estas ramas se añaden al repositorio local con el nombre `origin/nombre_rama`.
+
+Las ramas remotas o **tracking branch** son ramas que siguen a una rama remota. Se crean automáticamente al clonar un repositorio remoto o al añadir un repositorio remoto a un repositorio local.
+
+Se pueden ver las ramas remotas con el comando `git branch -r`
+
+```shell
+git branch -r
+```
+
+Las ramas remotas funcionan como marcadores, para recordarte en qué estado se encontraban tus repositorios remotos la última vez que conectaste con ellos. Se mueven automáticamente cuando estableces comunicaciones en la red y no pueden ser movidas de otra manera.
+
+No puedes trabajar directamente en una rama remota (no se pueden realizar merge o añadir commits), pero puedes hacerlo en una rama local que siga a una rama remota.
+
+Para trabajar con ellas, se puede crear una rama local que apunte a la rama remota con el comando `git checkout`
+
+```shell
+git checkout -b nombre_rama origin/nombre_rama.
+```
+
+#### Git remote
+
+Git utiliza remote y ramas remotas (tracking branch) como referencias que facilitan la conexión con otros repositorios (conocidos como remotos)
+
+Si el repositorio ha sido **clonado** con `git clone`, se habrá creado automáticamente una referencia al repositorio remoto con el nombre `origin`.
+
+Si se ha creado un repositorio local con `git init`, se puede añadir una referencia al repositorio remoto con el comando `git remote add`
+
+```shell
+git remote add origin <url>
+```
+
+##### Operaciones con git remote
+
+- `git remote`: Lista los repositorios remotos
+- `git remote -v`: Lista los repositorios remotos con la URL
+- `git remote add <nombre> <url>`: Añade un repositorio remoto
+- `git remote remove <nombre>`: Elimina un repositorio remoto
+- `git remote show <nombre>`: Muestra información sobre un repositorio remoto
+- `git remote rename <nombre> <nuevo_nombre>`: Cambia el nombre de un repositorio remoto
+- `git fetch <nombre>`: Descarga los cambios del repositorio remoto
+
+#### Operaciones con repositorios remotos
+
+Para mantener sincronizados los repositorios local y remoto, se utilizan los comandos `git push` y `git pull` que permiten subir y bajar cambios entre ambos repositorios.
+
+##### Git push
+
+- `git push`: Sube los cambios locales al repositorio remoto. Si aún no existe la rama remota, da un mensaje de error que indica el comando necesario para poder crear la rama en el remoto: `git push -u origin <rama>`
+
+  - `git push -u origin main`: Sube los cambios locales al repositorio remoto y establece la rama remota como rama de seguimiento
+  - `git push origin :rama`: Elimina la rama remota
+  - `git push origin --tags`: Sube todos los tags al repositorio remoto (no se suben por defecto)
+
+Git push no puede subir cambios si hay cambios en el repositorio remoto que no están en el local. En este caso, se debe hacer un `git pull` para descargar los cambios del remoto al local y fusionarlos con los locales.
+
+Sin embargo, si se quiere subir los cambios locales sin fusionar con los remotos y sobre escribiéndolos, se puede utilizar el modificador `--force` o `-f`
+
+```shell
+git push -f
+```
+
+Esto podría ser necesario si hemos **reescrito la historia localmente** y queremos subir los cambios al remoto. Es una operación peligrosa, ya que se pierden los cambios del remoto. Y en todo caso debe estar concertada con el resto del equipo.
+
+##### Git pull
+
+- `git pull`: Descarga los cambios del repositorio remoto al repositorio local. Es equivalente a `git fetch` seguido de `git merge`
+
+  - `git fetch` descarga una determinada rama del repositorio remoto y la almacena en una rama remota, con su etiqueta `origin/rama`. No produce ningún cambio en las ramas locales
+  - `git merge` fusiona la rama remota con la rama local, utilizando la estrategia ff (fast forward) si es posible
+
+Con frecuencia el intento de hacer un push recibe el aviso de que hay cambios en el remoto que no están en el local, lo que impide hacer el push. En este caso, se debe hacer un pull para descargar los cambios del remoto al local y fusionarlos con los locales.
+
+![git pull after push problem](assets/git.pull.svg)
+
+Comandos relacionados con estas operaciones son
+
+- `git pull --rebase`: Descarga los cambios del repositorio remoto al repositorio local y los fusiona con los locales, utilizando la estrategia rebase
+- `git pull --ff-only`: Descarga los cambios del repositorio remoto al repositorio local y los fusiona con los locales, utilizando la estrategia ff (fast forward) si es posible
+- `git pull --no-ff`: Descarga los cambios del repositorio remoto al repositorio local y los fusiona con los locales, creando un commit de merge aunque sea posible hacer un ff (fast forward)
+- `git checkout --track –b <local-branch> <remote-repo> / <remote-branch>`: Recupera una rama remota en una rama local y cambia a dicha rama
+- `git branch <local-branch> <repo>/<remote-branch>`: Recupera una rama remota en una rama local
+
+### Trabajando desde repositorios remotos
+
+- Pull requests
+- Forks
+- Workflow con ramas
+  - Git flow
+  - GitLab flow
+  - GitHub flow
+
+#### Pull Request
+
+Un **Pull Request** es una petición que se hace a los colaboradores de un proyecto para que revisen y acepten los cambios que se han hecho en una rama y se fusionen con la rama principal.
+
+No es una operación de Git, sino una funcionalidad de los servidores de repositorios Git, como GitHub, GitLab o Bitbucket.
+
+Por tanto se crea en el servidor, no en el repositorio local. Se puede hacer desde la web del servidor o desde la línea de comandos, con el comando `git request-pull`
+
+```shell
+git request-pull <inicio> <final> <repositorio>
+```
+
+- Si la nueva rama se crea localmente, el primer paso es subirla al repositorio remoto con `git push`
+
+```shell
+git checkout -b <rama>
+echo "Nuevo contenido" > README.md
+git add .
+git commit -m "Mensaje"
+git push --set-upstream origin feature
+# equivale a git push -u origin <rama>
+```
+
+Al acceder al repositorio en GitHub, se puede ver la nueva rama y generalmente aparecerá un aviso "feature had recent pushes less than a minute ago" y un botón "Compare & pull request"
+
+El interface de GitHub muestra la información de la PR:
+base: la rama a la que se quiere fusionar (main)
+compare: la rama que se quiere fusionar (feature)
+
+Además, permite añadir un título y una descripción al Pull Request, y seleccionar los revisores y diversas etiquetas (Labels, Projects, Milestone...) relacionadas con la gestión del proyecto.
+
+Una vez creada, la PR realiza las comprobaciones que tenga definidas el proyecto, como tests, análisis de código, etc. y notifica a los revisores.
+
+En una PR abierta tanto el autor como los revisores pueden realizar la siguientes operaciones
+
+- Permite a los revisores revisar los cambios y hacer comentarios
+- Permite a los revisores aprobar o rechazar los cambios
+- Permite a los revisores fusionar los cambios
+- Permite a los revisores cerrar la PR
+- Permite al autor de la PR cerrar la PR
+- Permite al autor de la PR borrar la rama
+- Permite al autor de la PR reabrir la PR
+
+El autor puede cambiar el estado de la PR
+
+- draft, para indicar que no está lista para ser merge, aunque la política del equipo quizás defina que puede ir siendo revisada,
+- ready, para indicar que está lista.
+
+Cualquiera con acceso a la rama puede añadir nuevos commits, que se incorporaran automáticamente a la PR, desencadenando de nuevo los procesos de revisión y notificación.
+
+Una PR abierta puede verse como un mecanismo de colaboración en el equipo, dando lugar a discusiones, mejoras, etc. más que como un simple mecanismo de aprobación.
+
+En cualquier caso su uso depende mucho de la dinámica de trabajo de cada equipo. Es frecuente que se defina la necesidad de un mínimo de aprobaciones para poder fusionar una PR, que dependerá entre otras coss del tamaño del equipo. Se puede definir que el responsable de fusionar sea el autor, una vez recibidas las aprobaciones, el último de los revisores etc.
+
+En cualquier caso el proceso de fusión de una PR es un proceso de merge / rebase, que puede ser automático o manual, dependiendo de la configuración del proyecto. En el segundo caso,basta usar el botón que proporciona el interfaz y elegir la estrategia de fusión, ff, rebase, squash, etc. de entre las que se hayan permitido en la configuración de la rama principal.
+
+El cierre de la PR puede ser consecuencia de su fusión o del abandono de esta línea de trabajo, y si es necesario se puede reabrir.
+
+##### Configuración de las ramas y PR
+
+Cuando se trabaja con PR es habitual realizar una serie de ajustes en la configuración de la s ramas, especialmente en la rama principal, para facilitar el trabajo con PR.
+
+- Proteger la rama principal para evitar cambios directos
+- Configurar la rama principal como rama por defecto de las PR
+- Configurar las opciones de fusión permitidas para las PR y la opción por defecto
+- Configurar las opciones de revisión de las PR
+- Configurar las opciones de notificación de las PR
+- Configurar las opciones de eliminación de las ramas de las PR
+- Configurar las opciones de eliminación de las PR
+
+Todos estos ajustes se realizan en la configuración del repositorio en el servidor, no en el repositorio local, accediendo a los settings -> branches.
+
+- Se crea un rulset
+- Se aplica a la rama default
+- Se selecciona Require a pull request before merging
+- Se selecciona Require status checks to pass
+
+Otra opción es utilizar "Add classic branch protection rule" que también permite configurar las opciones de protección de la rama principal de forma detallada.
+
+##### Actualizaciones de las ramas feature
+
+Con el tiempo, la rama principal puede avanzar y la rama feature puede quedarse desactualizada. Para mantenerla actualizada, se puede hacer un merge de la rama feature sobre la rama principal, después de haber actualizado esta.
+
+```shell
+git checkout main
+git pull
+git checkout feature
+git merge main
+```
+
+Los posibles conflictos se resuelven como en cualquier merge, en el entrono local y una vez resueltos, se suben los cambios al repositorio remoto
+
+```shell
+git push
+```
+
+#### Forks
+
+Los forks son copias de un repositorio en el que se puede trabajar de forma independiente. Son muy útiles para colaborar en proyectos de código abierto, ya que permiten trabajar en un proyecto sin tener permisos de escritura en el repositorio original.
+
+Para hacer un fork de un repositorio en GitHub, se utiliza el botón Fork que aparece en la parte superior derecha de la página del repositorio.
+
+En un fork se puede trabajar de la misma forma que con un repositorio local, clonando el fork, creando ramas, añadiendo commits, etc. Además, a partir de un fork se puede hacer un pull request al repositorio original. Si esta es aprobada, los cambios se incorporan al repositorio original.
+
+Este modelo de trabajo es el que se emplea habitualmente en proyectos de código abierto, en los que los colaboradores no tienen permisos de escritura en el repositorio original.
+
+#### Workflows
+
+##### GitFlow
+
+El GitFlow es un modelo de ramificación que se basa en dos ramas principales:
+
+- master: rama principal, estable, que contiene el código en producción
+- develop: rama de desarrollo, inestable, que contiene el código en desarrollo
+
+Además, se utilizan otras ramas auxiliares:
+
+- feature: rama de desarrollo de una nueva funcionalidad
+- release: rama de preparación de una nueva versión
+- hotfix: rama de corrección de errores en producción
+
+El flujo de trabajo es el siguiente:
+
+1. Se crea una rama feature a partir de develop
+2. Se desarrolla la funcionalidad en la rama feature
+3. Se fusiona la rama feature en develop
+4. Se crea una rama release a partir de develop
+5. Se prepara la nueva versión en la rama release
+6. Se fusiona la rama release en master
+7. Se fusiona la rama release en develop
+
+En caso de que aparezca la necesidad de corregir un error en producción,
+
+1. se crea una rama hotfix a partir de master
+2. se corrige el error
+3. se fusiona la rama hotfix en master y develop.
+
+![Git flow](assets/git_flow.png)
+
+Entre las ventajas del GitFlow se encuentran:
+
+- Facilita la colaboración en equipos grandes
+- Hay mucha documentación y herramientas que lo soportan
+- Es un modelo muy extendido
+- Las ramas están muy bien definidas y organizadas
+
+Entre las desventajas del GitFlow se encuentran:
+
+- Es un modelo muy complejo, especialmente para equipos pequeños
+- Puede ser difícil de entender y de implementar
+- Si hay un rollback, puede ser complicado de gestionar y se pierde todo el valor entregado
+- Las ramas feature pueden ser muy largas y difíciles de gestionar
+- Puede haber problemas de integración si no se hace un merge frecuente
+- No esta muy bien adaptado a la filosofía de entrega continua (CI/CD)
+
+Referencias
+
+- [Git Flow](https://nvie.com/posts/a-successful-git-branching-model/)
+- [Git Flow Cheatsheet](https://danielkummer.github.io/git-flow-cheatsheet/)
+
+##### GitLab Flow (Environment Branching)
+
+El GitLab Flow es un modelo de ramificación que se basa en las siguientes ramas:
+
+- environment: ramas de entorno, que contienen el código en producción, preproducción, etc.
+- master: rama principal, estable, que contiene el código en desarrollo
+- feature: ramas de desarrollo de una nueva funcionalidad
+- hotfix: ramas de corrección de errores en producción
+
+El flujo de trabajo es el siguiente:
+
+1. Se crea una rama feature a partir de master
+2. Se desarrolla la funcionalidad en la rama feature
+3. Se fusiona la rama feature en master
+4. Se crea una rama environment a partir de master
+5. Se despliega la rama environment en un entorno de pruebas
+6. Se prueba la funcionalidad en el entorno de pruebas
+7. Se fusiona la rama environment en producción
+8. Se despliega la rama environment en producción
+
+![GitLab flow](assets/gitlab_flow.png)
+
+Entre las ventajas del GitLab Flow se encuentran:
+
+- Facilita la colaboración en equipos grandes
+- Master nunca esta roto, siempre está en producción
+- Los environment branches permiten tener entorno para probar distintas configuraciones
+
+Entre las desventajas del GitLab Flow se encuentran:
+
+- Es un modelo muy complejo, especialmente para equipos pequeños
+- Las ramas feature pueden ser muy largas y difíciles de gestionar
+- Si hay un rollback, puede ser complicado de gestionar y se pierde todo el valor entregado
+- No esta muy bien adaptado a la filosofía de entrega continua (CI/CD)
+
+Referencias
+
+- [GitLab Flow](https://about.gitlab.com/topics/version-control/what-are-gitlab-flow-best-practices/)- - [Environment and other Branching Strategies](https://www.javacodegeeks.com/2015/11/git-branching-strategies.html)
+
+##### GitHub Flow, Feature Branching, Trunk Based Development
+
+El GitHub Flow, con distintas variantes conocidas como Feature Branching o Trunk Based Development, es un modelo de ramificación que se basa en las siguientes ramas:
+
+- master: rama principal, estable, que contiene el código en producción
+- feature: ramas cortas de de desarrollo de una nueva funcionalidad
+
+El flujo de trabajo es el siguiente:
+
+1. Se crea una rama feature a partir de master
+2. Se desarrolla la funcionalidad en la rama feature
+3. Se fusiona la rama feature en master
+4. Se despliega la rama master en producción
+5. En algunas variantes del modelo, se aplican tags a determinados commits de master para marcar las versiones
+6. Se repite el proceso con cada nueva rama feature
+
+![GitHub flow](assets/github_flow.png)
+
+Entre las ventajas del GitHub Flow se encuentran:
+
+- Es un modelo muy sencillo, fácil de entender y de implementar
+- Facilita la colaboración en equipos pequeños
+- Master nunca esta roto, siempre está en producción
+- Las ramas feature son cortas y fáciles de gestionar
+- Se adapta muy bien a la filosofía de entrega continua (CI/CD)
+
+Entre las desventajas del GitHub Flow se encuentran:
+
+- Puede no ser adecuado para equipos grandes
+- Es muy importante que las ramas de feature sean cortas
+- Al aplicarse la filosofía de CI/CD y desplegar master en producción, la integración de estar bien automatizada y los tests se vuelven críticos
+
+Referencias
+
+- [GitHub Flow](https://guides.github.com/introduction/flow/)
+- [Understanding the GitHub Flow](https://github.com/a-a-ron/Github-Flow)
+- [Trunk based ](https://trunkbaseddevelopment.com/)
+
+##### Ship-show-ask
+
+Es un modelo de ramificación propuesto más recientemente que se basa en tres procedimientos diferentes
+
+- Ship: se desarrolla el código directamente en master y por tanto se envía inmediatamente a producción
+- Show: se desarrolla el código en una rama feature y se muestra a los interesados antes de fusionarla en master, pero sin someterla a un proceso de code review y aprobación
+- Ask: se desarrolla el código en una rama feature y se somete a un proceso de code review y aprobación antes de fusionarla en master, como se hace en el GitHub Flow
+
+El desarrollador cobra un mayor protagonismo al decidir cual de las tres estrategias aplicar en cada caso, en función de la criticidad del cambio, la complejidad del código, la urgencia del despliegue, etc.
+
+Referencias
+
+- [ship-show-ask](https://martinfowler.com/articles/ship-show-ask.html)
+
+### Conclusiones. Buenas prácticas
+
+- Commits atómicos
+- Commits frecuentes
+- No commits de trabajo a medias
+- Test antes de commit
+- Buenos mensajes de commit
+- Usar branches, feature-branching
+- Fijar un workflow común
+
+### Apéndice
+
+- Configuración de Git. Git Hooks
+- Sub-proyectos con Git
+  - Git Submodules
+  - Git Subtree
