@@ -21,6 +21,14 @@ Formador / Desarrollador Web FullStack
 
 ## Contenidos
 
+- Conceptos básicos
+- Fundamentos y arquitectura interna de GIT
+- Commits
+- Cambios en el histórico
+- Branching
+- Trabajando con repositorios remotos
+- Pull Requests. Flows
+
 ### Conceptos básicos
 
 - ¿Qué es y que no es GIT?
